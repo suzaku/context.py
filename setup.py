@@ -2,9 +2,10 @@ from distutils.core import setup
 
 
 setup(
-    name='context',
+    name='context.py',
     version='0.1',
     description='A library that create and maintain context stacks',
     author='Satoru Logic',
+    author_email='satorulogic@gmail.com',
     py_modules=['context'],
 )
