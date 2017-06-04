@@ -1,12 +1,10 @@
-from unittest.mock import Mock
-
 import pytest
 
 from context import new_context, cur_context
 
 
-def test_can_access_vars_in_context():
-    func_called_by_inner = Mock()
+def test_can_access_vars_in_context(mocker):
+    func_called_by_inner = mocker.Mock()
 
     def outter():
         with new_context() as ctx:
@@ -20,8 +18,8 @@ def test_can_access_vars_in_context():
     func_called_by_inner.assert_called_with(42)
 
 
-def test_should_raise_AttributeError_if_accessed_outside_context():
-    func_called_outside_context = Mock()
+def test_should_raise_AttributeError_if_accessed_outside_context(mocker):
+    func_called_outside_context = mocker.Mock()
     with pytest.raises(AttributeError):
         func_called_outside_context(cur_context.value)
 
